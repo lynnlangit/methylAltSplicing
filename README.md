@@ -1,4 +1,13 @@
 
+## Workflow Process
+
+'0. PreProcessing_RNAseqData.sbatch  
+1a. ProbabilityInclusion.R 1b. PreProcessingWGBS.R 1c. runCufflinks.sbatch  
+'2. AnalysisExonsIntrons.R  
+'3. CreateFeatures.R   
+4a. WriteANNMatrix.R 4b. AnalyseProfilesPlots --- 4c. GBM_Metropolis-Hastings.R    
+5a. ANN_Metropolis-Hastings.R 5b. ANN.R 5c. GBM.R
+
 #### 0. PreProcessing_RNAseqData.sbatch: Maps RNA sequencing data to available exon annotations from GENCODE 
 Note: Uses bedops, samtools and bedtools
 - input - output folder, first bam file (reads) & second bam file (reads)
@@ -47,7 +56,7 @@ Note: Cell type CAN be changed in beginning of script.
 - input - data from CreateFeatures.R
 - output - various plots
 
-#### 4c. GBM_Metropolis-Hastings: Runs Metropolis Hastings algorithm to fine tune param set of a GBM 
+#### 4c. GBM_Metropolis-Hastings.R: Runs Metropolis Hastings algorithm to fine tune param set of a GBM 
 NOTES: The cell type can be changed in the beginning of the script. 
 There is also a vector (in the beginning) which selects the features for the optimisation.
 - input - data from CreateFeatures.R, TRUE or FALSE parameter
@@ -70,7 +79,7 @@ Notes: The architecture stays constant but all other parameters changes. The cel
 	1) A log file that contains the last line of MH algorithm (best model).
 	2) (optional) If the script is run as a batch job, then the log file should contain all steps of the MH.
 
-#### 5b. ANN.R & GBM.R: Analyses prediction of best ANN and best GBM.
+#### 5b & 5c. ANN.R & GBM.R: Analyses prediction of best ANN and best GBM.
 - input - data from WriteANNMatrix.R
 - output - various plots
 
