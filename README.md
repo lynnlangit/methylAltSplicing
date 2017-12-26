@@ -2,25 +2,23 @@
 ## Workflow Process
 
 '0. PreProcessing_RNAseqData.sbatch  
-1a. ProbabilityInclusion.R 1b. PreProcessingWGBS.R 1c. runCufflinks.sbatch  
+'1a. ProbabilityInclusion.R 1b. PreProcessingWGBS.R 1c. runCufflinks.sbatch  
 '2. AnalysisExonsIntrons.R  
 '3. CreateFeatures.R   
-4a. WriteANNMatrix.R 4b. AnalyseProfilesPlots --- 4c. GBM_Metropolis-Hastings.R    
-5a. ANN_Metropolis-Hastings.R 5b. ANN.R 5c. GBM.R
+'4a. WriteANNMatrix.R 4b. AnalyseProfilesPlots.--- 4c. GBM_Metropolis-Hastings.R    
+'5a. ANN_Metropolis-Hastings.R 5b. ANN.R 5c. GBM.R
 
 #### 0. PreProcessing_RNAseqData.sbatch: Maps RNA sequencing data to available exon annotations from GENCODE 
 Note: Uses bedops, samtools and bedtools
-- input - output folder, first bam file (reads) & second bam file (reads)
+- input - output folder, first & second bam files (reads)
 - output - list of exons with mapped reads
 
-#### 1a. ProbabilityInclusion.R: Calcs max a posterior probability for inclusion of investigated exons
-- input:
-	1) data from PreProcessing_RNAseqData.sbatch
-	2) cell type (IMR90, Gm12878 or H1hesc) 
-- output - table (in directory end of script) w/ max a posterior probabilities for inclusion of exons
+#### 1a. ProbabilityInclusion.R: Calcs max posterior probability for inclusion of investigated exons
+- input - data from PreProcessing_RNAseqData.sbatch, cell type (IMR90, Gm12878 or H1hesc) 
+- output - table (in directory end of script) w/ max posterior probabilities for inclusion of exons
 
 #### 1b. PreProcessingWGBS.R: Declares given CpGs as mCpGs, for methylation rate: x => t1 && x <= t2. 
-Note: Script can also be modified to use smoothed distribution w/ bsseq package. 
+Note: Script can also be modified to use smoothed distribution w/ bsseq package 
 - input:
   	1) bed files (WGBS of the cell)
 	2) cell type (IMR90, Gm12878 or H1hesc)
@@ -52,7 +50,7 @@ Note: Cell type CAN be changed in beginning of script.
 - input - data from CreateFeatures.R
 - output - Matrix for the training of an ANN.
 
-#### 4b. AnalyseProfilesPlots: Plots methylation profiles before data is fed to the ANN.
+#### 4b. AnalyseProfilesPlots.---: Plots methylation profiles before data is fed to the ANN.
 - input - data from CreateFeatures.R
 - output - various plots
 
