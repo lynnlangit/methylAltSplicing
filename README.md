@@ -8,7 +8,7 @@
 '4a. WriteANNMatrix.R 4b. AnalyseProfilesPlots.--- 4c. GBM_Metropolis-Hastings.R    
 '5a. ANN_Metropolis-Hastings.R 5b. ANN.R 5c. GBM.R
 
-#### 0. PreProcessing_RNAseqData.sbatch: Maps RNA sequencing data to available exon annotations from GENCODE 
+#### 0. PreProcessing_RNAseqData.sbatch: Maps RNA sequencing data to available exon annotations from GENCODE
 Note: Uses bedops, samtools and bedtools
 - input - output folder, first & second bam files (reads)
 - output - list of exons with mapped reads
@@ -32,21 +32,17 @@ Note: Script can also be modified to use smoothed distribution w/ bsseq package
 
 #### 2. AnalysisExonsIntrons.R: Examines some characteristics of the exons & introns 
 Example: the length comparison or the Cpg/mCpG ratio comparison 
-Note: filters out some of the exons. 
-- input:
-	1) data from ProabilityInclusion.R
-	2) data from PreProcessingWGBS.R.R
-	3) data of runCufflinks.sbatch
-	4) cell type (IMR90, Gm12878 or H1hesc)
+Note: filters out some of the exons
+- input - data from ProabilityInclusion.R, PreProcessingWGBS.R.R, runCufflinks.sbatch, cell type (IMR90, Gm12878 or H1hesc)
 - output - various plots
 
-#### 3. CreateFeatures.R: Defines feature matrix for ANN & GBM. 
+#### 3. CreateFeatures.R: Defines feature matrix for ANN & GBM
 Note: Cell type MUST be changed in beginning of script
 - input - data from AnalysisExonsIntrons.R
 - output - list of features for the cell type
 
-#### 4a. WriteANNMatrix.R: Writes input matrix for deep learning algorithm. 
-Note: Cell type CAN be changed in beginning of script.
+#### 4a. WriteANNMatrix.R: Writes input matrix for deep learning algorithm
+Note: Cell type CAN be changed in beginning of script
 - input - data from CreateFeatures.R
 - output - Matrix for the training of an ANN.
 
@@ -77,8 +73,6 @@ Notes: The architecture stays constant but all other parameters changes. The cel
 	1) A log file that contains the last line of MH algorithm (best model).
 	2) (optional) If the script is run as a batch job, then the log file should contain all steps of the MH.
 
-#### 5b & 5c. ANN.R & GBM.R: Analyses prediction of best ANN and best GBM.
+#### 5b & 5c. ANN.R & GBM.R: Analyses prediction of best ANN and best GBM
 - input - data from WriteANNMatrix.R
 - output - various plots
-
-
