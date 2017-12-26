@@ -8,6 +8,8 @@
 '4a. WriteANNMatrix.R 4b. AnalyseProfilesPlots.--- 4c. GBM_Metropolis-Hastings.R    
 '5a. ANN_Metropolis-Hastings.R 5b. ANN.R 5c. GBM.R
 
+--------
+
 #### 0. PreProcessing_RNAseqData.sbatch: Maps RNA sequencing data to available exon annotations from GENCODE
 Note: Uses bedops, samtools and bedtools
 - input - output folder, first & second bam files (reads)
@@ -76,3 +78,5 @@ Notes: The architecture stays constant but all other parameters changes. The cel
 #### 5b & 5c. ANN.R & GBM.R: Analyses prediction of best ANN and best GBM
 - input - data from WriteANNMatrix.R
 - output - various plots
+
+----------
