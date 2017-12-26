@@ -103,7 +103,7 @@ The script used to analyse the prediction of the best ANN.
 - output:
 	1) various plots
 
-GBM.R:
+#### GBM.R:
 The script used to analyse the prediction of the best GBM.
 - input:
 	1) data from WriteANNMatrix.R
